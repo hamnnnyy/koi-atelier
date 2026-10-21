@@ -70,7 +70,7 @@
 | | |
 |---|---|
 | **좌표 · 방향 · 바이옴**<br>F3 없이 왼쪽 위에 작게 | **미니맵**<br>지도처럼 지형 표면만, 북쪽이 위 |
-| <img src="docs/media/hud.png" width="420" alt="좌표 HUD와 미니맵"> | <img src="docs/media/zoom.webp" width="420" alt="Z 키로 멀리 있는 금 기둥을 확대"> |
+| <img src="docs/media/hud.png" width="420" alt="좌표 HUD와 미니맵"> | <img src="docs/media/zoom.webp" width="420" alt="Z 키로 멀리 있는 벚나무를 확대"> |
 | **풀 브라이트** (B)<br>밤이나 동굴도 밝게, 셰이더를 켜도 동작 | **줌** (Z 누르고 있기)<br>부드러운 카메라로 확대 |
 | <img src="docs/media/fullbright.png" width="420" alt="풀 브라이트 끄기 전과 켠 후"> | **내구도 경고**<br>도구나 갑옷이 닳으면 알림과 종소리<br><img src="docs/media/durability.png" width="420" alt="다이아몬드 곡괭이 내구도 경고"> |
 
@@ -136,6 +136,11 @@ Java 21이 필요해요.
 - 후광, 날개 도트 그림: [`KoiSprites.java`](src/client/java/io/github/hamnnnyy/koiatelier/KoiSprites.java) 에 글자로 그려져 있어요 (`W` 밝은 칸, `K` 테두리, `.` 빈칸).
 - 망토, 아이콘 텍스처: `python tools/gen_textures.py` 로 다시 만들 수 있어요 (Pillow 필요).
 - 설정 항목은 [`KoiOptions.java`](src/client/java/io/github/hamnnnyy/koiatelier/KoiOptions.java) 한 곳에서 정의되고, 설정 화면과 `/koi` 명령어가 여기서 자동으로 만들어져요.
+
+## 📝 업데이트 내역
+
+- **[1.0.1](https://github.com/hamnnnyy/koi-atelier/releases/tag/v1.0.1)**: 셰이더(Iris)를 켜도 풀 브라이트가 동작해요. Sodium · Iris 호환을 확인했어요.
+- **[1.0.0](https://github.com/hamnnnyy/koi-atelier/releases/tag/v1.0.0)**: 첫 릴리스
 
 ## 📄 라이선스
 
