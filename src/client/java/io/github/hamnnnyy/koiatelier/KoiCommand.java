@@ -11,11 +11,13 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
+import java.util.function.Consumer;
+
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.argument;
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 // /koi                                      전체 설정 보기
-// /koi menu                                 설정 화면 열기
+// /koi menu|open|settings [fish|aura|style|hud]   설정 화면 열기 (페이지를 주면 그 페이지로)
 // /koi <설정 이름> [값]                       설정 하나 보기/바꾸기 (설정 이름은 KoiOptions 참고)
 // /koi <1|2|all> <무늬> <바탕색> <무늬색>      물고기 모양 한 번에 바꾸기
 // /koi head_text <문구|clear>                머리 위 문구
@@ -23,20 +25,33 @@ import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.lit
 // /koi reset                                전부 기본값으로
 public class KoiCommand {
     private final KoiConfig config;
-    private final Runnable openMenu;
+    private final Consumer<KoiOptions.Page> openMenu;
 
-    public KoiCommand(KoiConfig config, Runnable openMenu) {
+    public KoiCommand(KoiConfig config, Consumer<KoiOptions.Page> openMenu) {
         this.config = config;
         this.openMenu = openMenu;
+    }
+
+    private LiteralArgumentBuilder<FabricClientCommandSource> menu(String name) {
+        LiteralArgumentBuilder<FabricClientCommandSource> node = literal(name).executes(ctx -> {
+            openMenu.accept(null);
+            return 1;
+        });
+        for (KoiOptions.Page page : KoiOptions.Page.values()) {
+            node.then(literal(page.name().toLowerCase()).executes(ctx -> {
+                openMenu.accept(page);
+                return 1;
+            }));
+        }
+        return node;
     }
 
     public void register(CommandDispatcher<FabricClientCommandSource> dispatcher) {
         LiteralArgumentBuilder<FabricClientCommandSource> root = literal("koi")
                 .executes(ctx -> show(ctx.getSource()))
-                .then(literal("menu").executes(ctx -> {
-                    openMenu.run();
-                    return 1;
-                }))
+                .then(menu("menu"))
+                .then(menu("open"))
+                .then(menu("settings"))
                 .then(literal("reset").executes(ctx -> {
                     config.reset();
                     config.save();

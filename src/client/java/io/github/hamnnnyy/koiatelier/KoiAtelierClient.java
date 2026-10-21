@@ -78,8 +78,9 @@ public class KoiAtelierClient implements ClientModInitializer {
         });
 
         // 채팅창이 닫힌 다음에 열리도록 한 프레임 미룸
-        KoiCommand command = new KoiCommand(config,
-                () -> MinecraftClient.getInstance().send(() -> MinecraftClient.getInstance().setScreen(createConfigScreen(null))));
+        // 페이지로 바로 열면 완료를 눌렀을 때 메인 설정 화면으로 돌아감
+        KoiCommand command = new KoiCommand(config, page -> MinecraftClient.getInstance().send(() -> MinecraftClient.getInstance().setScreen(
+                page == null ? createConfigScreen(null) : new KoiConfigScreen(createConfigScreen(null), config, page))));
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> command.register(dispatcher));
     }
 

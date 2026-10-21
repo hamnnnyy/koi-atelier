@@ -81,7 +81,7 @@
 ## ⚙️ 설정
 
 ### 설정 화면
-채팅에 **`/koi menu`** 를 입력하거나, [Mod Menu](https://modrinth.com/mod/modmenu)의 설정 버튼을 눌러요.
+채팅에 **`/koi menu`** (또는 `/koi open`, `/koi settings`)를 입력하거나, [Mod Menu](https://modrinth.com/mod/modmenu)의 설정 버튼을 눌러요.
 꾸미기 페이지에서는 캐릭터를 3인칭 정면으로 보여줘서, 버튼을 누르는 즉시 결과를 확인할 수 있어요.
 
 <img src="docs/media/menu.webp" width="560" alt="설정 화면에서 후광, 날개, 망토, 펫을 켜면 뒤의 캐릭터에 바로 나타나는 모습">
@@ -92,7 +92,8 @@
 | 명령어 | 설명 |
 |---|---|
 | `/koi` | 전체 설정 보기 |
-| `/koi menu` | 설정 화면 열기 |
+| `/koi menu` | 설정 화면 열기. `/koi open`, `/koi settings`도 같아요. |
+| `/koi open <fish\|aura\|style\|hud>` | 그 페이지로 바로 열기. 예: `/koi open aura` |
 | `/koi <설정> <값>` | 설정 하나 바꾸기. 예: `/koi wings_type dragon`, `/koi size 2` |
 | `/koi <1\|2\|all> <무늬> <바탕색> <무늬색>` | 잉어 모양 한 번에. 예: `/koi all spotty white orange` |
 | `/koi head_text <문구\|clear>` | 머리 위 문구 |
