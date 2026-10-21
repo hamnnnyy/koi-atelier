@@ -1,0 +1,9 @@
+# 저장소에는 LF로 저장
+* text=auto eol=lf
+
+# Windows 배치 파일은 CRLF
+*.bat text eol=crlf
+
+# 바이너리
+*.png binary
+*.jar binary

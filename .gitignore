@@ -1,0 +1,15 @@
+# Gradle / 빌드 결과
+.gradle/
+build/
+out/
+
+# 개발용 클라이언트 (월드, 설정, 로그, 스크린샷)
+run/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# 테스트 영상
+*.mp4

@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "koi-orbit",
+	"version": "${version}",
+	"name": "Koi Orbit",
+	"description": "Client-side cosmetics and HUD: orbiting koi, particle aura and trail, pet, halo, cape, wings, coordinates, minimap, durability warning, zoom and fullbright. Only you can see the cosmetics.",
+	"authors": [
+		"chohamin"
+	],
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.example.koiorbit.KoiOrbitClient"
+		],
+		"modmenu": [
+			"com.example.koiorbit.KoiModMenu"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.16.0",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"mixins": [
+		{
+			"config": "koi-orbit.client.mixins.json",
+			"environment": "client"
+		}
+	]
+}
