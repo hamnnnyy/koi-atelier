@@ -1,20 +1,26 @@
 {
 	"schemaVersion": 1,
-	"id": "koi-orbit",
+	"id": "koi-atelier",
 	"version": "${version}",
-	"name": "Koi Orbit",
+	"name": "Koi Atelier",
 	"description": "Client-side cosmetics and HUD: orbiting koi, particle aura and trail, pet, halo, cape, wings, coordinates, minimap, durability warning, zoom and fullbright. Only you can see the cosmetics.",
 	"authors": [
-		"chohamin"
+		"hamnnnyy"
 	],
+	"contact": {
+		"homepage": "https://github.com/hamnnnyy/koi-atelier",
+		"sources": "https://github.com/hamnnnyy/koi-atelier",
+		"issues": "https://github.com/hamnnnyy/koi-atelier/issues"
+	},
 	"license": "MIT",
+	"icon": "assets/koi-atelier/icon.png",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"com.example.koiorbit.KoiOrbitClient"
+			"io.github.hamnnnyy.koiatelier.KoiAtelierClient"
 		],
 		"modmenu": [
-			"com.example.koiorbit.KoiModMenu"
+			"io.github.hamnnnyy.koiatelier.KoiModMenu"
 		]
 	},
 	"depends": {
@@ -25,7 +31,7 @@
 	},
 	"mixins": [
 		{
-			"config": "koi-orbit.client.mixins.json",
+			"config": "koi-atelier.client.mixins.json",
 			"environment": "client"
 		}
 	]

@@ -1,7 +1,7 @@
-"""Koi Orbit 텍스처 생성기: 망토, 흰색 바탕, 미니맵 화살표. (후광/날개는 KoiSprites.java의 도트 그림)
+"""Koi Atelier 텍스처 생성기: 망토, 흰색 바탕, 미니맵 화살표, 모드 아이콘. (후광/날개는 KoiSprites.java의 도트 그림)
 
 사용법: python tools/gen_textures.py  (Pillow 필요)
-결과는 src/client/resources/assets/koi-orbit/textures/ 에 저장됨
+결과는 src/client/resources/assets/koi-atelier/textures/ 에 저장됨
 """
 import math
 import random
@@ -9,7 +9,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-OUT = Path(__file__).resolve().parent.parent / "src/client/resources/assets/koi-orbit/textures"
+OUT = Path(__file__).resolve().parent.parent / "src/client/resources/assets/koi-atelier/textures"
 
 
 # ---------- 망토 (64x32, 바닐라 망토 + 엘리트라 UV) ----------
@@ -120,6 +120,45 @@ def arrow():
     img.save(OUT / "minimap_arrow.png")
 
 
+# ---------- 모드 아이콘 (16x16 도트를 128x128로 확대) ----------
+ICON = [
+    "................",
+    "....oooooooo....",
+    "..oo~~~~~~~~oo..",
+    ".o~~~~~~~~~~~~o.",
+    ".o~~~~GGGG~~~~o.",
+    "o~~~~GGRGGG~~~~o",
+    "o~~GGGWRRGGG~~~o",
+    "o~GGKGWWRGGGGF~o",
+    "o~GGGGWRRGGGFF~o",
+    "o~~GGGRRGGG~~F~o",
+    "o~~~~GGGGG~~~~~o",
+    ".o~~~~~GG~~~~~o.",
+    ".o~~~~~~~~~~~~o.",
+    "..oo~~~~~~~~oo..",
+    "....oooooooo....",
+    "................",
+]
+ICON_COLORS = {
+    "o": (60, 40, 30, 255),     # 연못 테두리
+    "~": (40, 90, 150, 255),    # 물
+    "G": (245, 190, 40, 255),   # 금색 비늘
+    "R": (230, 90, 40, 255),    # 주황 무늬
+    "W": (250, 245, 235, 255),  # 흰 무늬
+    "K": (20, 20, 25, 255),     # 눈
+    "F": (255, 220, 120, 255),  # 꼬리
+}
+
+
+def icon():
+    img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    for y, row in enumerate(ICON):
+        for x, ch in enumerate(row):
+            if ch in ICON_COLORS:
+                img.putpixel((x, y), ICON_COLORS[ch])
+    return img
+
+
 if __name__ == "__main__":
     (OUT / "cape").mkdir(parents=True, exist_ok=True)
     cape("koi", (20, 20, 26, 255), koi)
@@ -129,4 +168,6 @@ if __name__ == "__main__":
     cape("ocean", (10, 40, 110, 255), ocean)
     white()
     arrow()
+    # 모드 아이콘 (Mod Menu, 런처에서 보임)
+    icon().resize((128, 128), Image.NEAREST).save(OUT.parent / "icon.png")
     print("saved to", OUT)

@@ -13,3 +13,6 @@ run/
 
 # 테스트 영상
 *.mp4
+
+# Python
+__pycache__/
