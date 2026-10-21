@@ -34,6 +34,13 @@ repositories {
 		name = 'TerraformersMC'
 		url = 'https://maven.terraformersmc.com/releases/'
 	}
+	maven {
+		name = 'Modrinth'
+		url = 'https://api.modrinth.com/maven'
+		content {
+			includeGroup 'maven.modrinth'
+		}
+	}
 }
 
 dependencies {
@@ -45,6 +52,16 @@ dependencies {
 	// Mod Menu 연동 (선택): 컴파일에만 쓰고 모드에 포함하지 않음, 개발용 클라이언트에서는 실행
 	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 	modLocalRuntime "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+	// ./gradlew runClient -Pshaders : 셰이더(Iris + Sodium)를 켠 개발용 클라이언트. 모드에는 포함하지 않음
+	// 셰이더팩은 run/shaderpacks 에 넣기
+	if (project.hasProperty('shaders')) {
+		modLocalRuntime "maven.modrinth:sodium:${project.sodium_version}"
+		modLocalRuntime "maven.modrinth:iris:${project.iris_version}"
+		localRuntime "org.anarres:jcpp:1.4.14"
+		localRuntime "io.github.douira:glsl-transformer:2.0.1"
+		localRuntime "org.antlr:antlr4-runtime:4.13.1"
+	}
 }
 
 processResources {

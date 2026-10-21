@@ -36,6 +36,7 @@ public class KoiAtelierClient implements ClientModInitializer {
     private final KoiTrail trail = new KoiTrail(config);
     private final KoiPet pet = new KoiPet(config);
     private final KoiHud hud = new KoiHud(config);
+    private final KoiFullbright fullbright = new KoiFullbright(config);
     private final KoiFish[] fish = new KoiFish[2];
     private ClientWorld fishWorld;
     private KeyBinding toggleKey, menuKey, fullbrightKey;
@@ -104,6 +105,7 @@ public class KoiAtelierClient implements ClientModInitializer {
         }
         zoom.tick(client);
         hud.tick(client);
+        fullbright.tick(client);
 
         if (client.world == null) {
             fishWorld = null;
