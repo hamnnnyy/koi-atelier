@@ -140,6 +140,7 @@ Java 21이 필요해요.
 
 ## 📝 업데이트 내역
 
+- **[1.0.2](https://github.com/hamnnnyy/koi-atelier/releases/tag/v1.0.2)**: `/koi open`, `/koi settings` 명령어로도 설정 화면을 열 수 있어요. `/koi open aura`처럼 페이지를 붙이면 그 페이지로 바로 열려요.
 - **[1.0.1](https://github.com/hamnnnyy/koi-atelier/releases/tag/v1.0.1)**: 셰이더(Iris)를 켜도 풀 브라이트가 동작해요. Sodium · Iris 호환을 확인했어요.
 - **[1.0.0](https://github.com/hamnnnyy/koi-atelier/releases/tag/v1.0.0)**: 첫 릴리스
 
